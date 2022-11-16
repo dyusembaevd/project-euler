@@ -20,11 +20,11 @@ func main() {
 
 func diag2(grid models.Grid) int {
 	res := 0
-	for row := shift - 1; row < len(grid.Rows); row++ {
-		for col := 0; col < len(grid.Rows[0])-shift; col++ {
+	for row := shift - 1; row < len(grid); row++ {
+		for col := 0; col < len(grid[0])-shift; col++ {
 			mult := 1
 			for i := 0; i < shift; i++ {
-				mult = mult * grid.Rows[row-i][col+i]
+				mult = mult * grid[row-i][col+i]
 			}
 			res = max(res, mult)
 		}
@@ -34,11 +34,11 @@ func diag2(grid models.Grid) int {
 
 func diag1(grid models.Grid) int {
 	res := 0
-	for row := 0; row < len(grid.Rows)-shift; row++ {
-		for col := 0; col < len(grid.Rows[0])-shift; col++ {
+	for row := 0; row < len(grid)-shift; row++ {
+		for col := 0; col < len(grid[0])-shift; col++ {
 			mult := 1
 			for i := 0; i < shift; i++ {
-				mult = mult * grid.Rows[row+i][col+i]
+				mult = mult * grid[row+i][col+i]
 			}
 			res = max(res, mult)
 		}
@@ -48,11 +48,11 @@ func diag1(grid models.Grid) int {
 
 func right(grid models.Grid) int {
 	res := 0
-	for row := 0; row < len(grid.Rows); row++ {
-		for col := 0; col < len(grid.Rows[0])-shift; col++ {
+	for row := 0; row < len(grid); row++ {
+		for col := 0; col < len(grid[0])-shift; col++ {
 			mult := 1
 			for i := col; i < col+shift; i++ {
-				mult = mult * grid.Rows[row][i]
+				mult = mult * grid[row][i]
 			}
 			res = max(res, mult)
 		}
@@ -62,11 +62,11 @@ func right(grid models.Grid) int {
 
 func up(grid models.Grid) int {
 	res := 0
-	for col := 0; col < len(grid.Rows[0]); col++ {
-		for row := 0; row < len(grid.Rows)-shift; row++ {
+	for col := 0; col < len(grid[0]); col++ {
+		for row := 0; row < len(grid)-shift; row++ {
 			mult := 1
 			for i := row; i < row+shift; i++ {
-				mult = mult * grid.Rows[i][col]
+				mult = mult * grid[i][col]
 			}
 			res = max(res, mult)
 		}
